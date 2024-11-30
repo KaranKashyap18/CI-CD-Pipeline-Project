@@ -1,10 +1,7 @@
-FROM python:3.9-slim
-
-WORKDIR /app
-COPY user-service/ /app/
-COPY user-service/requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-
-CMD ["python", "app.py"]  # Replace 'app.py' with your main script
-
+FROM node:12.2.0-alpine
+WORKDIR app
+COPY . .
+RUN npm install
+RUN npm run test
+EXPOSE 8000
+CMD ["node","app.js"]
