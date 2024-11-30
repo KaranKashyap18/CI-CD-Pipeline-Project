@@ -1,6 +1,11 @@
 FROM python:3.9-slim
+
 WORKDIR /app
-COPY . /app
+
+COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-CMD ["python", "app.py"]
+
+COPY . /app
+
+CMD ["python", "app.py"]  # Replace 'app.py' with your main script
 
